@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import questionsData  from '../questions';
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -13,17 +14,8 @@ const Quiz = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch questions from the JSON file
-    fetch('questions.json')
-      .then(response => response.json())
-      .then(data => {
-        setQuestions(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching questions:', error);
-        setLoading(false);
-      });
+    setQuestions(questionsData)
+    setLoading(false)
   }, []);
 
   useEffect(() => {
